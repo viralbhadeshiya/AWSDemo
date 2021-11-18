@@ -1,0 +1,24 @@
+org: test
+app: myapp
+service:
+  name: demoAWS
+
+plugins:
+  - serverless-plugin-typescript
+
+package:
+  include:
+    - 'src/**'
+    - package.json
+    - package-lock.json
+
+
+functions:
+  Users:
+    handler: src/indx.handler
+    # The `events` block defines how to trigger the uploadImage.handler code
+    events:
+      - http:
+        path: user
+        method: get
+      Bucket: ${self:custom.bucket} 
